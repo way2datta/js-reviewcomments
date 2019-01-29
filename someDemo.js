@@ -30,7 +30,7 @@ const users = [100, 200, 300, 400, 500];
 console.log(isPresent(users, 400));
 console.log(isPresent(users, 440));
 
-// Better way: declarative
+// Declarative
 const _ = require('lodash');
 console.log(_.some(users, (user) => user === 400));
 console.log(_.some(users, (user) => user === 440));
@@ -53,12 +53,15 @@ containsAllMen = _.every(teamMembers, (member) => member.gender == "Male");
 console.log("Contains all men: " + containsAllMen);
 
 let options = [];
+
 for (let index = 0; index < teamMembers.length; index++) {
     const member = teamMembers[index];
     options.push({ value: member.name, key: member.id });
 }
-options = _.map(teamMembers, function(m) {
-    return { key: m.id, value: m.name};
+
+// Declarative way
+options = _.map(teamMembers, function(member) {
+    return { key: member.id, value: member.name};
 });
 
 console.log(options);
